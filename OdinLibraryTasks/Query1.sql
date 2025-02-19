@@ -1,4 +1,4 @@
-#1. Books Not Loaned Out in the Last 6 Months.(joined loadate)
+#1. Books Not Loaned Out in the Last 6 Months.(joined loandate)
 select books.bookid,books.Title,loandate from books 
 left join loans on
 books.bookid = loans.bookid

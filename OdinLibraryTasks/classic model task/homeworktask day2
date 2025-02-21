@@ -1,0 +1,18 @@
+Task 5:
+Use LAST_VALUE to find the last product price in each product line.
+select productname,last_value(buyprice)over(partition by productline 
+order by productCode range between unbounded preceding and unbounded following) as  lastprice
+FROM products;
+
+
+# Task 6: 
+Find the first and last order dates for each customer using window functions.
+select orders.customernumber,customername,
+first_value(orderdate)
+over(partition by customernumber order by orderdate range between unbounded preceding and unbounded following) as firstorderdate,
+last_value(orderdate)
+over(partition by customernumber order by orderdate range between unbounded preceding and unbounded following) as lastorderdate
+from orders 
+join customers 
+on
+orders.customernumber = customers.customernumber;
